@@ -1,0 +1,56 @@
+﻿@model ArabicProject.ViewModels.BlogModel
+
+<h4>Fill in the articale</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="WriteBlog">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BodyText" class="control-label"></label>
+                <input asp-for="BodyText" class="form-control" />
+                <span asp-validation-for="BodyText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Author" class="control-label"></label>
+                <input asp-for="Author" class="form-control" />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <select asp-for="selected" asp-items="@(new SelectList(Model._section,"Id","SectionName"))"></select>
+                <span asp-validation-for="selected" class="text-danger"></span>
+
+                
+            </div>
+            <div>
+                @*<select asp-for="id" asp-items="@(new SelectList(  @ViewBag.ListItems,"id","sectionName"))"></select>*@
+                @*<select  asp-items="@(new SelectList(new List<sections> {
+   
+        new sections { SectionName = "MMMM", Id = 2 },
+        new sections { SectionName = "FFFF", Id = 3 }
+    }, "jamal","FFFF",1))" ></select>*@
+
+                
+
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
